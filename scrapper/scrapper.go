@@ -116,6 +116,8 @@ func writeJobs(jobs []extractedJob) {
 
 	//put w in file
 	defer w.Flush()
+	defer file.Close()
+
 
 	headers := []string{"ID", "Title", "Location", "Summary"}
 

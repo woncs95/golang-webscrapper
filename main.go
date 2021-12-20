@@ -27,9 +27,24 @@ func handleScrape(c echo.Context) error {
 	return c.Attachment(fileName, fileName)
 }
 
+// func getenv(key, fallback string) string {
+//     value := os.Getenv(key)
+//     if len(value) == 0 {
+//         return fallback
+//     }
+//     return value
+// }
+
 func main() {
 	e := echo.New()
 	e.GET("/", handleHome)
 	e.POST("/scrape", handleScrape)
+	
+	// serverport := getenv("SERVER_PORT", "1323") 
+	// portString := fmt.Sprintf(":%s", serverport)
+
 	e.Logger.Fatal(e.Start(":1323"))
+	// if err := e.Start(portString); err != http.ErrServerClosed {
+	// 	e.Logger.Fatal(err)
+	// }
 }
